@@ -1,0 +1,23 @@
+.setting-icon-container {
+  position: relative;
+  .setting-icon {
+    z-index: 9999;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .circle {
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    z-index: 10;
+    top: 100vh;
+
+    transform: translateX(-50%) translateY(-10vh);
+    // bottom: 3px;
+  }
+}
