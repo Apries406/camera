@@ -7,11 +7,9 @@ import {
 import { Theme } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import "../src/assets/App.scss";
-import { Camera } from "./components/Camera";
-import { Setting } from "./components/Setting";
-import useConfigStore from "./stores/useConfigStore";
-import useDevicesStore from "./stores/useDevicesStore";
-import useHoverStore from "./stores/useHoverStore";
+import { useConfigStore, useDevicesStore, useHoverStore } from "./stores";
+import { Camera } from "./views/Camera";
+import { Setting } from "./views/Setting";
 function App(): JSX.Element {
   const isRounded = useConfigStore((state) => state.configs.rounded);
   const borderRadius = useConfigStore((state) => state.configs.borderRadius);
@@ -24,9 +22,9 @@ function App(): JSX.Element {
   // * 设备列表
   const [_devices, setDevices] = useState<MediaDeviceInfo[]>([]);
 
-  const quit = () => {
-    window.api.quit();
-  };
+  // const quit = () => {
+  //   window.api.quit();
+  // };
   useEffect(() => {
     // * 使用MediaDevices.enumerateDevices()方法获取可用的媒体输入和输出设备的列表。(麦克风、摄像头、耳机设备)
     navigator.mediaDevices.enumerateDevices().then((res) => {
@@ -49,14 +47,14 @@ function App(): JSX.Element {
       style={{
         borderRadius: isRounded ? "50%" : `${borderRadius}px`,
       }}
-      // onMouseEnter={() => {
-      //   setIsHoverCamera(true);
-      //   console.log("enter");
-      // }}
-      // onMouseLeave={() => {
-      //   setIsHoverCamera(false);
-      //   console.log("leave");
-      // }}
+      onMouseEnter={() => {
+        setIsHoverCamera(true);
+        console.log("enter");
+      }}
+      onMouseLeave={() => {
+        setIsHoverCamera(false);
+        console.log("leave");
+      }}
       // onContextMenu={quit}
     >
       <div>

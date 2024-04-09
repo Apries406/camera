@@ -2,6 +2,7 @@ import { electronApp, is, optimizer } from "@electron-toolkit/utils";
 import { BrowserWindow, app, shell } from "electron";
 import { join } from "path";
 import icon from "../../resources/icon.png?asset";
+import "./contextMenu";
 import "./drag";
 import "./ipcMain";
 import createTray from "./tray";
@@ -50,6 +51,8 @@ function createWindow(): void {
     mainWindow.loadFile(join(__dirname, "../renderer/index.html"));
   }
 }
+
+app.commandLine.appendSwitch("disable-features", "WidgetLayering");
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

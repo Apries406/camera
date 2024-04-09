@@ -3,9 +3,6 @@ import { contextBridge, ipcRenderer } from "electron";
 
 // Custom APIs for renderer
 const api = {
-  quit: () => {
-    ipcRenderer.send("quit");
-  },
   setWinAspectRatio: (opt: {
     width?: number;
     height?: number;
@@ -15,6 +12,9 @@ const api = {
   },
   windowDrag: (opt: { x: number; y: number }) => {
     ipcRenderer.invoke("window-drag", opt);
+  },
+  showContextMenu: () => {
+    ipcRenderer.invoke("show-context-menu");
   },
 };
 

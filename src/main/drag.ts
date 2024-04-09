@@ -11,6 +11,6 @@ ipcMain.handle("window-drag", (event, opt: { x: number; y: number }) => {
   const [width, height] = win.getSize();
   console.log(width, height);
   win.setPosition(mx, my);
-  win.setSize(width, height);
+  win.setSize(parseInt(width.toString()), parseInt(height.toString()));
   console.log("window-drag", opt);
 });

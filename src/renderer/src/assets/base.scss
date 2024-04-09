@@ -2,10 +2,34 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-
 body {
-  overflow: hidden;
+  background: transparent;
+}
+
+.drag {
+  // * 可拖拽
+  -webkit-app-region: drag;
+  // * 菜单文字间距
+  --mx-menu-placeholder-width: 10px !important;
+}
+
+.no-drag,
+input,
+select,
+textarea,
+option,
+button,
+a {
+  // * 不可拖拽
+  -webkit-app-region: no-drag;
+}
+
+textarea,
+.no-select {
+  // * 禁止选中
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
